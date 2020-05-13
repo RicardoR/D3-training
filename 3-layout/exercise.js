@@ -1,14 +1,14 @@
-function gridData() {
-  var data = new Array();
-  var xpos = 1;
-  var ypos = 1;
-  var width = 50;
-  var height = 50;
-  var click = 0;
+function gridBigData() {
+  let data = new Array();
+  let xpos = 1;
+  let ypos = 1;
+  let width = 10;
+  let height = 10;
+  let click = 0;
 
-  for (let row = 0; row < 10; row++) {
+  for (let row = 0; row < 90; row++) {
     data.push(new Array());
-    for (let column = 0; column < 10; column++) {
+    for (let colum = 0; colum < 90; colum++) {
       data[row].push({
         x: xpos,
         y: ypos,
@@ -22,35 +22,32 @@ function gridData() {
     ypos += height;
   }
   return data;
-  // 2 dimensions array 10 x 10
 }
 
-var gridData = gridData();
-console.log("gridData...", gridData);
+var gridBigData = gridBigData();
+console.log("gridBigData...", gridBigData);
 
-var grid = d3
+var gridBig = d3
   .select("body")
   .append("svg")
-  .attr("width", "510")
-  .attr("height", "510");
+  .attr("width", "902")
+  .attr("height", "902");
 
-var row = grid
-  .selectAll(".row")
-  .data(gridData)
+var rowBig = gridBig
+  .selectAll(".big-row")
+  .data(gridBigData)
   .enter()
   .append("g")
-  .attr("class", "row");
+  .attr("class", "big-row");
 
-var column = row
-  .selectAll(".square")
+var columnBig = rowBig
+  .selectAll("square-small")
   .data((d) => {
-    // return the data stored on each row == > array with 10 elements
-    console.log(d);
     return d;
   })
   .enter()
   .append("rect")
-  .attr("class", "square")
+  .attr("class", "square-small")
   .attr("x", (d) => {
     return d.x;
   })
@@ -65,9 +62,7 @@ var column = row
   })
   .style("fill", "#fff")
   .style("stroke", "#222")
-  // click change mechanism: 1st => blue, 2nd => orange, 3rd => grey, 4th => white:
-  .on("click", function (d) {
-    console.log("click");
+  .on("mouseover", function (d) {
     d.click++;
     if (d.click % 4 == 0) {
       d3.select(this).style("fill", "#fff");
