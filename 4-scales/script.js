@@ -48,15 +48,35 @@ var rectangles = svg
   .selectAll("rect")
   .data(fruits)
   .enter()
+  .append("g")
+  .attr("class", "rect-container")
   .append("rect")
-  .attr("x", function (d, i) {
+  .attr("x", () => {
     return x(0);
   })
-  .attr("y", function (d, i) {
+  .attr("y", (d) => {
     return y(d.name);
   })
-  .attr("width", function (d, i) {
+  .attr("width", (d) => {
     return x(d.count) - x(0);
   })
   .attr("height", y.bandwidth())
   .attr("fill", "steelblue");
+
+var texts = svg
+  .selectAll(".rect-container")
+  .append("text")
+  .attr("x", (d) => {
+    return x(d.count);
+  })
+  .attr("y", (d) => {
+    return y(d.name);
+  })
+  .text((d) => {
+    return d.count;
+  })
+  .attr("transform", `translate(-10, ${y.bandwidth() / 2 + 3})`)
+  .attr("text-anchor", "middle")
+  .attr("fill", "white")
+  .style("font-size", "10px")
+  .style("font-family", "sans-serif");
