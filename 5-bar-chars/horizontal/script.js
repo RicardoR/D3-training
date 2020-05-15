@@ -1,10 +1,10 @@
-color = "steelblue";
-height = 500;
-margin = { top: 30, right: 0, bottom: 30, left: 40 };
-barHeight = 25;
-height = 693;
+var barHeight = 25;
+var color = "steelblue";
+var margin = { top: 30, right: 0, bottom: 30, left: 40 };
 
-width = window.innerWidth;
+var height = 693;
+var width = window.innerWidth;
+
 data = [
   { name: "E", value: 0.12702 },
   { name: "T", value: 0.09056 },
@@ -33,8 +33,8 @@ data = [
   { name: "Q", value: 0.00095 },
   { name: "Z", value: 0.00074 },
 ];
-columns = ["letter", "frequency"];
-format = "%";
+data.columns = ["letter", "frequency"];
+data.format = "%";
 
 var x = d3
   .scaleLinear()
@@ -47,7 +47,7 @@ var y = d3
   .rangeRound([margin.top, height - margin.bottom])
   .padding(0.1);
 
-var format = x.tickFormat(20, format);
+var format = x.tickFormat(20, data.format);
 
 var xAxis = (g) =>
   g
@@ -106,5 +106,3 @@ svg.append("g").call(xAxis);
 svg.append("g").call(yAxis);
 
 svg.node();
-
-format = x.tickFormat(20, data.format);
