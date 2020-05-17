@@ -42,7 +42,10 @@ svg.append("g").call(xAxis);
 
 svg.append("g").call(yAxis);
 
-var row = svg.selectAll(".row").enter().append("g").attr("class", "row");
+var color = d3
+  .scaleSequential()
+  .domain([0, d3.max(fruits, (d) => d.count)])
+  .interpolator(d3.interpolateBlues);
 
 var rectangles = svg
   .selectAll("rect")
@@ -61,7 +64,9 @@ var rectangles = svg
     return x(d.count) - x(0);
   })
   .attr("height", y.bandwidth())
-  .attr("fill", "steelblue");
+  .attr("fill", (d) => {
+    return color(d.count);
+  });
 
 var texts = svg
   .selectAll(".rect-container")
