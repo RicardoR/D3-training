@@ -162,4 +162,46 @@ require(["data"], function (data) {
 
   svgAreaWithLines.append("g").call(xAxis).node();
   svgAreaWithLines.append("g").call(yAxis).node();
+
+
+  // ============================================================================
+// ============================================================================
+// ============================================================================
+
+fruits = [
+  {name: "🍊", count: 21},
+  {name: "🍇", count: 13},
+  {name: "🍏", count: 8},
+  {name: "🍌", count: 5},
+  {name: "🍐", count: 3},
+  {name: "🍋", count: 2},
+  {name: "🍎", count: 1},
+  {name: "🍉", count: 1}
+]
+
+var svgArc = d3
+.select("body")
+.append("svg")
+.attr("width", width)
+.attr("height", height);
+
+pieArcData = d3.pie()
+    .value(d => d.count)
+  (fruits)
+
+  arcPie = d3.arc()
+  .innerRadius(210)
+  .outerRadius(310)
+  .padRadius(300)
+  .padAngle(2 / 300)
+  .cornerRadius(8)
+// arc([Math.PI / 2, Math.PI]) // from 90° to 180°
+
+console.log(pieArcData);
+
+svgArc.append("path")
+.attr("d", arcPie(pieArcData))
+.attr("fill", 'steelblue')
 });
+
+
