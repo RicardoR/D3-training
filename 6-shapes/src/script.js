@@ -195,12 +195,12 @@ pieArcData = d3.pie()
   .padRadius(300)
   .padAngle(2 / 300)
   .cornerRadius(8)
-// arc([Math.PI / 2, Math.PI]) // from 90° to 180°
 
 console.log(pieArcData);
 
 svgArc.append("path")
-.attr("d", arcPie(pieArcData))
+.data(pieArcData)
+.attr("d", function(d,i ){return arcPie(d)})
 .attr("fill", 'steelblue')
 });
 
