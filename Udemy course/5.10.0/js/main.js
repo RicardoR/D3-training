@@ -110,7 +110,7 @@ function update(data) {
     return d.country;
   });
 
-  // with this circles goes more quick why?
+  // with this circles go more quick why?
   // var circles = svg.selectAll("circle").data(data);
 
   // 2.- Exit old elements not represent in new data
