@@ -73,14 +73,16 @@ var yearsLabel = svg
   .attr("text-anchor", "middle")
   .text("1800");
 
-// Loading data:
 d3.json("data/data.json").then(function (data) {
   console.log(data);
   const dataCleaned = cleanData(data);
   console.log(dataCleaned);
   const arrayLength = dataCleaned.length - 1;
+
+  createContinentsLeyend(dataCleaned);
+
   d3.interval(function () {
-    dataIndex = dataIndex < 214 ? dataIndex + 1 : 0;
+    dataIndex = dataIndex < arrayLength ? dataIndex + 1 : 0;
     update(dataCleaned[dataIndex]);
   }, 100);
 
@@ -129,4 +131,39 @@ function update(data) {
     .attr("r", (d) => Math.sqrt(area(d.population) / Math.PI));
 
   yearsLabel.text(dataIndex + 1800);
+}
+
+function createContinentsLeyend(data) {
+  const continentList = [];
+  data.map((item) => {
+    item.map((data) => {
+      if (continentList.indexOf(data.continent) === -1) {
+        continentList.push(data.continent);
+      }
+    });
+  });
+
+  var leyend = svg
+    .append("g")
+    .attr("transform", `translate(${width - 10}, ${height - 125})`);
+
+  continentList.forEach((continent, i) => {
+    var leyendRow = leyend
+      .append("g")
+      .attr("transform", `translate(0, ${i * 20})`);
+
+    leyendRow
+      .append("rect")
+      .attr("width", 10)
+      .attr("height", 10)
+      .attr("fill", continentColor(continent));
+
+    leyendRow
+      .append("text")
+      .attr("x", -10)
+      .attr("y", 10)
+      .attr("text-anchor", "end")
+      .style("text-transform", "capitalize")
+      .text(continent);
+  });
 }
