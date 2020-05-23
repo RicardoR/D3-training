@@ -1,7 +1,8 @@
 # D3-training
 
-## Demos:
-Project1: 
+## Projects demos:
+
+Project 1: 
 * [Simple barchars graph](https://ricardor.github.io/D3-training/Udemy_course/3.13.0/index.html)
 
 Project 2:
