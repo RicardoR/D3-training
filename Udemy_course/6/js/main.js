@@ -139,10 +139,6 @@ d3.json("data/data.json").then(function (data) {
         country.income = +country.income;
         country.life_exp = +country.life_exp;
         return country;
-        return country;
-        return country;
-        return country;
-        return country;
       });
   });
 
