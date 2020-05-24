@@ -8,3 +8,6 @@ Project 1:
 Project 2:
 * [Gapminder](https://ricardor.github.io/D3-training/Udemy_course/5.10.0/index.html)
 * [Gapminder with controls](https://ricardor.github.io/D3-training/Udemy_course/6/index.html)
+
+Project 3:
+* [Line chart](https://ricardor.github.io/D3-training/Udemy_course/6.10.0/index.html)
