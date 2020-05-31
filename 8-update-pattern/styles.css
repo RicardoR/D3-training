@@ -1,0 +1,18 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+text {
+  font-size: 3em;
+  font-family: sans-serif;
+  text-anchor: middle;
+}
+
+rect {
+  fill: #e5ddbc;
+}
+
+circle {
+  stroke: black;
+}
