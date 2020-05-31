@@ -1,7 +1,31 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
 rect {
   fill: steelblue;
 }
 
 text {
-  font-size: 1.4em;
+  font-family: sans-serif;
+}
+
+.tick text {
+  font-size: 1.5em;
+  fill: #635f5d;
+}
+
+.tick line {
+  stroke: #c0c0bb;
+}
+
+.axis-label {
+  font-size: 2em;
+  fill: #8e8883;
+}
+
+.title {
+  font-size: 2.3em;
+  fill: #635f5d;
 }
